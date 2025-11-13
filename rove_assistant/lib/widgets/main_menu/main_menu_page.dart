@@ -10,6 +10,7 @@ import 'package:rove_assistant/services/analytics.dart';
 import 'package:rove_assistant/widgets/common/image_shadow.dart';
 import 'package:rove_assistant/widgets/common/rove_text.dart';
 import 'package:rove_assistant/widgets/rovers/rovers_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'new_campaign_dialog.dart';
 import 'main_menu_button.dart';
 import 'main_menu_campaigns_page.dart';
@@ -133,6 +134,11 @@ class MainMenuPage extends StatelessWidget {
               children: <Widget>[
                 _AnimatedBackground(),
                 Positioned(
+                  right: 24,
+                  bottom: 24,
+                  child: GamefoundButton(),
+                ),
+                Positioned(
                     left: 0,
                     top: 0,
                     right: width < MainMenuButton.buttonWidth * 2 ? 0 : null,
@@ -179,6 +185,28 @@ class MainMenuPage extends StatelessWidget {
         },
       );
     });
+  }
+}
+
+class GamefoundButton extends StatelessWidget {
+  const GamefoundButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      tooltip: 'Back Now on Gamefound',
+      icon: Image(
+        image: AssetImage('assets/images/gamefound.webp'),
+        width: 320,
+      ),
+      onPressed: () async {
+        final url = Uri.parse(
+            'https://gamefound.com/projects/addax-games/rove-anchorpoint?refcode=mVCPiOsU7UKRRU1yxe8u2A');
+        await launchUrl(url);
+      },
+    );
   }
 }
 
