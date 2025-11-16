@@ -80,6 +80,16 @@ class MainMenuPage extends StatelessWidget {
       );
     }
 
+    Widget demoButton() {
+      return MainMenuButton(
+        text: 'Play the Prologue',
+        onPressed: () async {
+          final url = Uri.parse('https://roveassistant.com/demo');
+          await launchUrl(url);
+        },
+      );
+    }
+
     void showAllCampaigns() {
       Analytics.logScreen('/main_menu/manage_campaigns');
       Navigator.of(context).push(PageRouteBuilder(
@@ -116,7 +126,7 @@ class MainMenuPage extends StatelessWidget {
       if (controller.hasCurrentCampaign) {
         buttons.add(continueButton());
       }
-      buttons.addAll([newCampaignButton(), loadButton()]);
+      buttons.addAll([newCampaignButton(), loadButton(), demoButton()]);
       return buttons;
     }
 
@@ -195,17 +205,19 @@ class GamefoundButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'Back Now on Gamefound',
-      icon: Image(
-        image: AssetImage('assets/images/gamefound.webp'),
-        width: 320,
+    return ImageShadow(
+      child: IconButton(
+        tooltip: 'Back Now on Gamefound',
+        icon: Image(
+          image: AssetImage('assets/images/gamefound.webp'),
+          width: 320,
+        ),
+        onPressed: () async {
+          final url = Uri.parse(
+              'https://gamefound.com/projects/addax-games/rove-anchorpoint?refcode=mVCPiOsU7UKRRU1yxe8u2A');
+          await launchUrl(url);
+        },
       ),
-      onPressed: () async {
-        final url = Uri.parse(
-            'https://gamefound.com/projects/addax-games/rove-anchorpoint?refcode=mVCPiOsU7UKRRU1yxe8u2A');
-        await launchUrl(url);
-      },
     );
   }
 }
