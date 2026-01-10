@@ -1795,6 +1795,7 @@ Remove that hoard tile and this unit from the map.'''
         'Twisted Chargers',
       ],
       unlocksTrait: true,
+      unlocksShopLevel: 3,
       milestone: CampaignMilestone.milestone3dot5,
       challenges: [
         'Bazhar Caller gains +2 [DEF] as long as there are other adversaries on the map.',

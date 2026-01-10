@@ -997,6 +997,7 @@ All enemies within [Range] 1 suffer [DMG]1.'''
           'Uzem\'s Judgment',
         ],
         unlocksTrait: true,
+        unlocksShopLevel: 3,
         milestone: CampaignMilestone.milestone4dot5,
         campaignLink: 'Chapter 3 - “**A Consequence**”, [campaign] **66**.',
         challenges: [
